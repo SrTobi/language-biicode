@@ -7,16 +7,25 @@
     'include' : '#comment'
   }
   {
-    'match': '^([^:]*)\\s*(:)\\s*([^#^\\s]*)'
+    'match': '^([^:]*)\\s*(:)\\s*([^#\\s]*)'
     'captures':
       '1':
-        'patterns': [
+        'patterns'  : [
           'include' : '#paths'
         ]
       '2':
         'name': 'punctuation.separator.key-value.biicode.policiesbii'
       '3':
-        'name': 'keyword.other.definition.biicode.policiesbii'
+        'patterns'  : [
+          {
+            'match' : '^(STABLE|DEV|BETA)$'
+            'name': 'constant.biicode.policiesbii'
+          }
+          {
+            'match' : '.*'
+            'name': 'keyword.other.definition.biicode.policiesbii'
+          }
+        ]
 
   }
   {

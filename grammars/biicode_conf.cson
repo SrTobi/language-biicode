@@ -162,7 +162,7 @@
       }
       {
         'match' : '[\\\\/]'
-        'name'  : 'punctuation.separator.file-path.biicode.layoutbii'
+        'name'  : 'punctuation.separator.file-path.biicode.biiconf'
       }
     ]
   ########################################################

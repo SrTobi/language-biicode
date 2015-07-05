@@ -1,0 +1,47 @@
+'fileTypes': [
+  'types.bii'
+]
+'name': 'Bii Types'
+'patterns': [
+  {
+    'include' : '#comment'
+  }
+  {
+    'match': '^\\s*(\\S+)\\s+([^#\\s]+)'
+    'captures':
+      '1':
+        'patterns': [
+          {
+            'include' : '#paths'
+          }
+          {
+            'match' : 'NOEXT'
+            'name': 'keyword.other.definition.biicode.typesbii'
+          }
+        ]
+      '2':
+        'patterns': [
+          {
+            'match' : '^(?i)(h|hh|hpp|c|cc|cpp|cxx|inl|ino|ipp|txt|bii|md|xml|html|htm|wav|jpeg|jpg|gif|png|bmp|json|py|js|node|java|f90|for|f)(?-i)$'
+            'name': 'constant.biicode.typesbii'
+          }
+        ]
+  }
+  {
+    'include' : '#paths'
+  }
+]
+'repository':
+  'comment':
+    {
+      'match' : '#.*'
+      'name'  : 'comment.biicode.typesbii'
+    }
+  'paths' :
+    'patterns': [
+      {
+        'match' : '\\*'
+        'name'  : 'keyword.wildcard.biicode.typesbii'
+      }
+    ]
+'scopeName': 'source.biicode'

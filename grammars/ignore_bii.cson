@@ -12,12 +12,8 @@
     'name'  : 'punctuation.separator.file-path.biicode.ignorebii'
   }
   {
-    'match' : '^(!)(.*)'
-    'captures':
-      '1':
-        'name'  : 'keyword.negated.biicode.ignorebii'
-      '2':
-        'name'  : 'line.negated.biicode.ignorebii'
+    'match' : '!'
+    'name'  : 'keyword.negated.biicode.ignorebii'
   }
   {
     'match' : '\\*'

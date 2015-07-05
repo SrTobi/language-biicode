@@ -1,0 +1,43 @@
+'fileTypes': [
+  'policies.bii'
+]
+'name': 'Bii Policies'
+'patterns': [
+  {
+    'include' : '#comment'
+  }
+  {
+    'match': '^([^:]*)\\s*(:)\\s*([^#^\\s]*)'
+    'captures':
+      '1':
+        'patterns': [
+          'include' : '#paths'
+        ]
+      '2':
+        'name': 'punctuation.separator.key-value.biicode.policiesbii'
+      '3':
+        'name': 'keyword.other.definition.biicode.policiesbii'
+
+  }
+  {
+    'include' : '#paths'
+  }
+]
+'repository':
+  'comment':
+    {
+      'match' : '#.*'
+      'name'  : 'comment.biicode.policiesbii'
+    }
+  'paths' :
+    'patterns': [
+      {
+        'match' : '\\*'
+        'name'  : 'keyword.wildcard.biicode.policiesbii'
+      }
+      {
+        'match' : '[\\\\/]'
+        'name'  : 'punctuation.separator.file-path.biicode.policiesbii'
+      }
+    ]
+'scopeName': 'source.biicode'

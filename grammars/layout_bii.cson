@@ -1,0 +1,53 @@
+'fileTypes': [
+  'layout.bii'
+]
+'name': 'Bii Layout'
+'patterns': [
+  {
+    'include' : '#comment'
+  }
+  {
+    'match': '^\\s*([-\\w]*)\\s*(:)([^#]*)'
+    'captures':
+      '1':
+        'patterns': [
+          {
+            'match' : '(?i)(cmake|lib|build|deps|auto-root-block|root-block)(?-i)'
+            'name': 'keyword.other.definition.biicode.layoutbii'
+          }
+        ]
+      '2':
+        'name': 'punctuation.separator.key-value.biicode.layoutbii'
+      '3':
+        'patterns': [
+          {
+            'include' : '#paths'
+          }
+          {
+            'match' : '(?i)(true|false)(?-i)'
+            'name': 'constant.biicode.layoutbii'
+          }
+        ]
+  }
+  {
+    'include' : '#paths'
+  }
+]
+'repository':
+  'comment':
+    {
+      'match' : '#.*'
+      'name'  : 'comment.biicode.layoutbii'
+    }
+  'paths' :
+    'patterns': [
+      {
+        'match' : '\\*'
+        'name'  : 'keyword.wildcard.biicode.layoutbii'
+      }
+      {
+        'match' : '[\\\\/]'
+        'name'  : 'punctuation.separator.file-path.biicode.layoutbii'
+      }
+    ]
+'scopeName': 'source.biicode'

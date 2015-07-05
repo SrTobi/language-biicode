@@ -1,0 +1,31 @@
+'fileTypes': [
+  'ignore.bii'
+]
+'name': 'Bii Ignore'
+'patterns': [
+  {
+    'match' : '#.*'
+    'name'  : 'comment.biicode.ignorebii'
+  }
+  {
+    'match' : '/'
+    'name'  : 'punctuation.separator.file-path.biicode.ignorebii'
+  }
+  {
+    'match' : '^(!)(.*)'
+    'captures':
+      '1':
+        'name'  : 'keyword.negated.biicode.ignorebii'
+      '2':
+        'name'  : 'line.negated.biicode.ignorebii'
+  }
+  {
+    'match' : '\\*'
+    'name'  : 'keyword.wildcard.biicode.ignorebii'
+  }
+  {
+    'match' : '(\\\\!|\\\\\\*|\\\\\\\\)'
+    'name'  : 'constant.character.escape.biicode.ignorebii'
+  }
+]
+'scopeName': 'source.biicode'

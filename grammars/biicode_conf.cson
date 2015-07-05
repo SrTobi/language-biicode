@@ -111,6 +111,36 @@
       }
     ]
   }
+  ####### includes section #######
+  {
+    'begin' : '\\[(includes)\\]'
+    'end' : '(?=\\[\\w+\\])'
+
+    'beginCaptures' :
+      '1' :
+        'name': 'entity.name.section.group-title.biicode.biiconf'
+
+    'patterns' : [
+      {
+        'include' : '#includes_sec'
+      }
+    ]
+  }
+  ####### data section #######
+  {
+    'begin' : '\\[(data)\\]'
+    'end' : '(?=\\[\\w+\\])'
+
+    'beginCaptures' :
+      '1' :
+        'name': 'entity.name.section.group-title.biicode.biiconf'
+
+    'patterns' : [
+      {
+        'include' : '#data_sec'
+      }
+    ]
+  }
 ]
 ############################################################################
 ############################################################################
@@ -165,6 +195,22 @@
       }
     ]
   ########################################################
+  'file_add_deps' :
+    'patterns': [
+      {
+      'match' : '^([^#+]*)(\\+[^#]*)'
+      'captures':
+        '1':
+          'patterns' : [
+            {
+              'include' : '#paths'
+            }
+          ]
+        '2':
+          'name' : 'markup.inserted.biicode.biiconf'
+      }
+    ]
+  ########################################################
   'requirements_sec' :
     'patterns' : [
       {
@@ -204,31 +250,31 @@
         'include' : '#paths'
       }
       {
-        'match' : '^([^#+]*)(\\+[^#]*)$'
+        'match' : '^([^#+]*)(\\+[^#]*)'
         'captures':
           '1':
             'patterns' : [
-              'include' : 'paths'
+              'include' : '#paths'
             ]
           '2':
             'name' : 'markup.inserted.biicode.biiconf'
       }
       {
-        'match' : '^([^#-]*)(-[^#]*)$'
+        'match' : '^([^#-]*)(-[^#]*)'
         'captures':
           '1':
             'patterns' : [
-              'include' : 'paths'
+              'include' : '#paths'
             ]
           '2':
             'name' : 'markup.deleted.biicode.biiconf'
       }
       {
-        'match' : '^([^#=]*)(=[^#]*)$'
+        'match' : '^([^#=]*)(=[^#]*)'
         'captures':
           '1':
             'patterns' : [
-              'include' : 'paths'
+              'include' : '#paths'
             ]
           '2':
             'name' : 'markup.changed.biicode.biiconf'
@@ -267,17 +313,39 @@
         'include' : '#paths'
       }
       {
-        'match' : '^([^#+]*)(\\+[^#]*)$'
-        'captures':
-          '1':
-            'patterns' : [
-              'include' : 'paths'
-            ]
-          '2':
-            'name' : 'markup.inserted.biicode.biiconf'
+        'include' : '#file_add_deps'
       }
     ]
-
-
+  ########################################################
+  'includes_sec' :
+    'patterns' : [
+      {
+        'include' : '#comment'
+      }
+      {
+        'include' : '#paths'
+      }
+      {
+        'match' : ':\\s*(\\w+/\\w+)(/[\\S]+)?'
+        'captures':
+          '1':
+            'name' : 'entity.name.class.biicode.biiconf'
+          '2':
+            'name'  : 'markup.inserted.biicode.biiconf'
+      }
+    ]
+  ########################################################
+  'data_sec' :
+    'patterns' : [
+      {
+        'include' : '#comment'
+      }
+      {
+        'include' : '#paths'
+      }
+      {
+        'include' : '#file_add_deps'
+      }
+    ]
 
 'scopeName': 'source.biicode'

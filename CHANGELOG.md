@@ -1,3 +1,3 @@
 ## 0.1.0 - First Release
-* Every feature added
-* Every bug fixed
+* Syntax highlighting for ignore.bii, layout.bii, policies.bii
+  types.bii and biicode.conf

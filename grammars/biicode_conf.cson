@@ -1,0 +1,249 @@
+'fileTypes': [
+  'biicode.conf'
+]
+'name': 'Biicode Config File'
+'patterns': [
+  {
+    'include' : '#comment'
+  }
+  ####### requirements section #######
+  {
+    'begin' : '\\[(requirements)\\]'
+    'end' : '(?=\\[\\w+\\])'
+
+    'beginCaptures' :
+      '1' :
+        'name': 'entity.name.section.group-title.biicode.biiconf'
+
+    'patterns' : [
+      {
+        'include' : '#requirements_sec'
+      }
+    ]
+  }
+  ####### parent section #######
+  {
+    'begin' : '\\[(parent)\\]'
+    'end' : '(?=\\[\\w+\\])'
+
+    'beginCaptures' :
+      '1' :
+        'name': 'entity.name.section.group-title.biicode.biiconf'
+
+    'patterns' : [
+      {
+        'include' : '#parent_sec'
+      }
+    ]
+  }
+  ####### paths section #######
+  {
+    'begin' : '\\[(paths)\\]'
+    'end' : '(?=\\[\\w+\\])'
+
+    'beginCaptures' :
+      '1' :
+        'name': 'entity.name.section.group-title.biicode.biiconf'
+
+    'patterns' : [
+      {
+        'include' : '#paths_sec'
+      }
+    ]
+  }
+  ####### dependencies section #######
+  {
+    'begin' : '\\[(dependencies)\\]'
+    'end' : '(?=\\[\\w+\\])'
+
+    'beginCaptures' :
+      '1' :
+        'name': 'entity.name.section.group-title.biicode.biiconf'
+
+    'patterns' : [
+      {
+        'include' : '#dependencies_sec'
+      }
+    ]
+  }
+  ####### mains section #######
+  {
+    'begin' : '\\[(mains)\\]'
+    'end' : '(?=\\[\\w+\\])'
+
+    'beginCaptures' :
+      '1' :
+        'name': 'entity.name.section.group-title.biicode.biiconf'
+
+    'patterns' : [
+      {
+        'include' : '#mains_sec'
+      }
+    ]
+  }
+  ####### tests section #######
+  {
+    'begin' : '\\[(tests)\\]'
+    'end' : '(?=\\[\\w+\\])'
+
+    'beginCaptures' :
+      '1' :
+        'name': 'entity.name.section.group-title.biicode.biiconf'
+
+    'patterns' : [
+      {
+        'include' : '#tests_sec'
+      }
+    ]
+  }
+]
+############################################################################
+############################################################################
+############################################################################
+############################################################################
+'repository':
+  ########################################################
+  'comment':
+    {
+      'match' : '#.*'
+      'name'  : 'comment.biicode.biiconf'
+    }
+  ########################################################
+  'paths' :
+    'patterns': [
+      {
+        'match' : '\\*'
+        'name'  : 'keyword.wildcard.biicode.biiconf'
+      }
+      {
+        'match' : '[\\\\/]'
+        'name'  : 'punctuation.separator.file-path.biicode.layoutbii'
+      }
+    ]
+  ########################################################
+  'negfile' :
+    'patterns': [
+      {
+        'match' : '!'
+        'name'  : 'keyword.negated.biicode.ignorebii'
+      }
+    ]
+  ########################################################
+  'block_version_dep' :
+    'patterns': [
+      {
+        'match' : '^\\s*(\\w+/\\w+)\\s*(\\(\\s*\\w*\\s*\\))?'
+        'captures':
+          '1':
+            'name' : 'entity.name.class.biicode.biiconf'
+          '2':
+            'name' : 'keyword.other.definition.biicode.biiconf'
+
+      }
+      {
+        'match' : '(?::\\s*(\\d+))|(@[^#\\s]*)'
+        'captures':
+          '1':
+            'name' : 'constant.biicode.biiconf'
+          '2':
+            'name' : 'constant.biicode.biiconf'
+      }
+    ]
+  ########################################################
+  'requirements_sec' :
+    'patterns' : [
+      {
+        'include' : '#comment'
+      }
+      {
+        'include' : '#block_version_dep'
+      }
+    ]
+  ########################################################
+  'parent_sec' :
+    'patterns' : [
+      {
+        'include' : '#comment'
+      }
+      {
+        'include' : '#block_version_dep'
+      }
+    ]
+  ########################################################
+  'paths_sec' :
+    'patterns' : [
+      {
+        'include' : '#comment'
+      }
+      {
+        'include' : '#paths'
+      }
+    ]
+  ########################################################
+  'dependencies_sec' :
+    'patterns' : [
+      {
+        'include' : '#comment'
+      }
+      {
+        'include' : '#paths'
+      }
+      {
+        'match' : '^([^#+]*)(\\+[^#]*)$'
+        'captures':
+          '1':
+            'patterns' : [
+              'include' : 'paths'
+            ]
+          '2':
+            'name' : 'markup.inserted.biicode.biiconf'
+      }
+      {
+        'match' : '^([^#-]*)(-[^#]*)$'
+        'captures':
+          '1':
+            'patterns' : [
+              'include' : 'paths'
+            ]
+          '2':
+            'name' : 'markup.deleted.biicode.biiconf'
+      }
+      {
+        'match' : '^([^#=]*)(=[^#]*)$'
+        'captures':
+          '1':
+            'patterns' : [
+              'include' : 'paths'
+            ]
+          '2':
+            'name' : 'markup.changed.biicode.biiconf'
+      }
+    ]
+  ########################################################
+  'mains_sec' :
+    'patterns' : [
+      {
+        'include' : '#comment'
+      }
+      {
+        'include' : '#negfile'
+      }
+      {
+        'include' : '#paths'
+      }
+    ]
+  ########################################################
+  'tests_sec' :
+    'patterns' : [
+      {
+        'include' : '#comment'
+      }
+      {
+        'include' : '#paths'
+      }
+    ]
+
+
+
+
+'scopeName': 'source.biicode'

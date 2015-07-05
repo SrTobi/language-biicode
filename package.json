@@ -1,19 +1,22 @@
 {
   "name": "language-biicode",
-  "version": "0.0.0",
-  "description": "A short description of your package",
+  "version": "0.1.0",
+  "description": "Syntax highlighting for all major biicode files in Atom.",
   "keywords": [
     "biicode",
     "language"
   ],
-  "activationCommands": {
-    "atom-workspace": "language-biicode:toggle"
-  },
-  "repository": "https://github.com/atom/language-biicode",
-  "license": "MIT",
   "engines": {
-    "atom": ">=1.0.0 <2.0.0"
+    "atom": "*",
+    "node": "*"
   },
-  "dependencies": {
+  "homepage": "https://github.com/SrTobi/language-biicode",
+  "repository": {
+    "type": "git",
+    "url":  "https://github.com/SrTobi/language-biicode.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SrTobi/language-biicode/issues"
   }
 }

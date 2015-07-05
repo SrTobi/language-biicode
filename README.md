@@ -1,5 +1,20 @@
-# Highlight definitions for Biicode files
+# Syntax highlighting for Biicode files
 
-A short description of your package.
+Adds syntax highlighting for all major [Biicode](https://www.biicode.com) files to your Atom editor.
+The following files are supported:
 
-![A screenshot of your package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+* biicode.conf
+* ignore.bii
+* layout.bii
+* policies.bii
+* types.bii
+
+See this preview file that shows a `biicode.conf`:
+
+![biicode.conf with language-biicode in Atom](https://raw.githubusercontent.com/SrTobi/language-biicode/master/preview.png)
+
+
+## Issues
+
+Please feel free to submit issues [here](https://github.com/SrTobi/language-biicode/issues)
+or contribute.
